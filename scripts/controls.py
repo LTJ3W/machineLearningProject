@@ -59,3 +59,30 @@ def move_right_res(duration):
     pydirectinput.keyDown('d')
     time.sleep(duration)
     pydirectinput.keyUp('d')
+
+#Action execution and timing functions
+def execute_action(action, duration=0.15):
+    if action == "do_nothing":
+        time.sleep(duration)
+
+    elif action == "throttle_up":
+        throttle_up(duration)
+
+    elif action == "throttle_down":
+        throttle_down(duration)
+
+    elif action == "rotate_left":
+        rotate_left(duration)
+
+    elif action == "rotate_right":
+        rotate_right(duration)
+
+    elif action == "stage":
+        activate_stage()
+
+    else:
+        raise ValueError(f"Unknown action: {action}")
+
+# Wait function to allow time for the action to take effect before observing the new state
+def wait_for_action_effect(duration=0.25):
+    time.sleep(duration)
