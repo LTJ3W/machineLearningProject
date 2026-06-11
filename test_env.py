@@ -10,7 +10,7 @@ for i in range(50):
 
     state, reward, done = env.step(action)
 
-    print("step:", i, "action:", action, "state:", state, "reward:", reward, "done:", done)
+    #print("step:", i, "action:", action, "state:", state, "reward:", reward, "done:", done)
 
     if done:
         break

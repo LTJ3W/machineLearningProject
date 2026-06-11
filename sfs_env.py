@@ -3,6 +3,7 @@ from scripts import controls
 
 class SFS_Env:
     def __init__(self):
+        self.has_staged = False
         self.max_steps = 300
         self.last_state = None
         self.last_height = None
@@ -18,6 +19,7 @@ class SFS_Env:
         ]
 
     def reset(self):
+        self.has_staged = False
         state = self.observe()
         self.episode_steps = 0
         self.last_state = state
@@ -50,6 +52,13 @@ class SFS_Env:
 
         if self.episode_steps >= self.max_steps:
             done = True
+        
+        if action == "stage":
+            if not self.has_staged:
+                reward += 25
+                self.has_staged = True
+            else:
+                reward -= 50
 
         self.last_state = state_after
 
